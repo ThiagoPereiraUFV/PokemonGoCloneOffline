@@ -428,9 +428,15 @@ public final class ControladoraFachadaSingleton {
         valores.put("nivel", nivelFinal);
         valores.put("xp", xpFinal);
 
-        int count = BancoDadosSingleton.getInstance().atualizar("usuario", valores, "login='"+getUsuario().getLogin()+"'");
+        boolean up = false;
 
-        return count == 1;
+        if(nivelAtual != nivelFinal) {
+            up = true;
+        }
+
+        BancoDadosSingleton.getInstance().atualizar("usuario", valores, "login='"+getUsuario().getLogin()+"'");
+
+        return up;
     }
 
     public int xpMaximo(int nivelUsuario) {
