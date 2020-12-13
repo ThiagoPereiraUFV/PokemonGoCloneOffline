@@ -492,14 +492,7 @@ public class CapturaActivity extends Activity implements SensorEventListener {
                         public void onCompletion(MediaPlayer mp) {
                             //TODO: enviar captura para o servidor antes de fechar tela. Talvez fazer isso diretamento no método capturar
                             ControladoraFachadaSingleton.getInstance().getUsuario().capturar(ap);
-                            boolean up = ControladoraFachadaSingleton.getInstance().aumentaXp("captura");   //atualiza XP do usuário após uma captura
-                            Toast.makeText(getBaseContext(),"Você ganhou " +
-                                    ControladoraFachadaSingleton.getInstance().getXpEvento("captura") + " de XP",Toast.LENGTH_SHORT).show();
-
-                            if(up) {
-                                Toast.makeText(getBaseContext(),"Parabéns! Você avançou para o nível " +
-                                        ControladoraFachadaSingleton.getInstance().getUsuario().getNivel(),Toast.LENGTH_LONG).show();
-                            }
+                            ControladoraFachadaSingleton.getInstance().aumentaXp("captura");   //atualiza XP do usuário após uma captura
 
                             finish(); //fecha o módulo de captura quando a música de sucesso acaba
                         }
